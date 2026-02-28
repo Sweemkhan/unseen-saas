@@ -1,39 +1,40 @@
 import { Metadata } from 'next';
-import Footer from '@/components/ui/Footer';
-import Navbar from '@/components/ui/Navbar';
-import { Toaster } from '@/components/ui/Toasts/toaster';
 import { PropsWithChildren, Suspense } from 'react';
 import { getURL } from '@/utils/helpers';
-import 'styles/main.css';
+import { Toaster } from '@/components/ui/Toasts/toaster';
+import { PHProvider } from './providers';
+import Navbar from '@/components/ui/Navbar/Navbar';
+import Footer from '@/components/ui/Footer/Footer';
+import '../styles/main.css';
 
-const title = 'Next.js Subscription Starter';
-const description = 'Brought to you by Vercel, Stripe, and Supabase.';
+const title = 'Unseen';
+const description = 'Your private emotional journal';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getURL()),
-  title: title,
-  description: description,
-  openGraph: {
-    title: title,
-    description: description
-  }
+  title,
+  description
 };
 
-export default async function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className="bg-black">
-        <Navbar />
-        <main
-          id="skip"
-          className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
-        >
-          {children}
-        </main>
-        <Footer />
-        <Suspense>
-          <Toaster />
-        </Suspense>
+      <body className="bg-zinc-950 min-h-screen">
+        <PHProvider>
+          <Navbar />
+          <main
+            id="skip"
+            className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
+          >
+            <Suspense>
+              {children}
+            </Suspense>
+          </main>
+          <Footer />
+          <Suspense>
+            <Toaster />
+          </Suspense>
+        </PHProvider>
       </body>
     </html>
   );

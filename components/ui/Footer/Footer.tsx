@@ -1,110 +1,72 @@
 import Link from 'next/link';
-
 import Logo from '@/components/icons/Logo';
-import GitHub from '@/components/icons/GitHub';
 
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-[1920px] px-6 bg-zinc-900">
-      <div className="grid grid-cols-1 gap-8 py-12 text-white transition-colors duration-150 border-b lg:grid-cols-12 border-zinc-600 bg-zinc-900">
-        <div className="col-span-1 lg:col-span-2">
-          <Link
-            href="/"
-            className="flex items-center flex-initial font-bold md:mr-24"
-          >
-            <span className="mr-2 border rounded-full border-zinc-700">
-              <Logo />
-            </span>
-            <span>ACME</span>
-          </Link>
-        </div>
-        <div className="col-span-1 lg:col-span-2">
-          <ul className="flex flex-col flex-initial md:flex-1">
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Home
-              </Link>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                About
-              </Link>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Careers
-              </Link>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Blog
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="col-span-1 lg:col-span-2">
-          <ul className="flex flex-col flex-initial md:flex-1">
-            <li className="py-3 md:py-0 md:pb-4">
-              <p className="font-bold text-white transition duration-150 ease-in-out hover:text-zinc-200">
-                LEGAL
-              </p>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link
-                href="/"
-                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
-              >
-                Terms of Use
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end">
-          <div className="flex items-center h-10 space-x-6">
-            <a
-              aria-label="Github Repository"
-              href="https://github.com/vercel/nextjs-subscription-payments"
-            >
-              <GitHub />
-            </a>
+    <footer className="bg-zinc-950 border-t border-zinc-800/50">
+      <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <Logo />
+            <p className="mt-3 text-zinc-500 text-sm max-w-xs leading-relaxed">
+              A private emotional journal that helps you understand your inner world.
+            </p>
+          </div>
+
+          {/* Product */}
+          <div>
+            <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+              Product
+            </h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'Journal', href: '/journal' },
+                { label: 'Insights', href: '/insights' },
+                { label: 'Account', href: '/account' }
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'Privacy Policy', href: '/privacy' },
+                { label: 'Terms of Service', href: '/terms' }
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-zinc-900">
-        <div>
-          <span>
-            &copy; {new Date().getFullYear()} ACME, Inc. All rights reserved.
-          </span>
-        </div>
-        <div className="flex items-center">
-          <span className="text-white">Crafted by</span>
-          <a href="https://vercel.com" aria-label="Vercel.com Link">
-            <img
-              src="/vercel.svg"
-              alt="Vercel.com Logo"
-              className="inline-block h-6 ml-4 text-white"
-            />
-          </a>
+
+        <div className="mt-10 pt-8 border-t border-zinc-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-zinc-600 text-xs">
+            &copy; {new Date().getFullYear()} Unseen. All rights reserved.
+          </p>
+          <p className="text-zinc-700 text-xs">
+            Built for the quiet moments.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,19 +1,15 @@
 .root {
-  @apply sticky top-0 bg-black z-40 transition-all duration-150 h-16 md:h-20;
+  @apply sticky top-0 bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-800/50 z-50;
 }
 
 .link {
-  @apply inline-flex items-center leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-zinc-200 rounded-md p-1;
+  @apply text-zinc-400 hover:text-zinc-200 text-sm font-medium transition-colors;
 }
 
-.link:hover {
-  @apply text-zinc-100;
+.activeLink {
+  @apply text-white text-sm font-medium;
 }
 
-.link:focus {
-  @apply outline-none text-zinc-100 ring-2 ring-pink-500 ring-opacity-50;
-}
-
-.logo {
-  @apply cursor-pointer rounded-full transform duration-100 ease-in-out;
+.cta {
+  @apply px-4 py-1.5 rounded-lg bg-violet-500 hover:bg-violet-400 text-white text-sm font-medium transition-all;
 }
